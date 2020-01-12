@@ -9,12 +9,12 @@ public class Movement : MonoBehaviour
     public bool IsGrounded = false;
     private bool facingRight = true;
     private float moveInput;
-    private Rigidbody2D rb;
+    private Rigidbody2D slime;
     private int extraJump;
 	
 	void Start ()
     {
-        rb = GetComponent<Rigidbody2D>();
+        slime = GetComponent<Rigidbody2D>();
 	}
 
     
@@ -23,7 +23,7 @@ public class Movement : MonoBehaviour
         
         moveInput = Input.GetAxis("Horizontal");
         
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        slime.velocity = new Vector2(moveInput * moveSpeed, slime.velocity.y);
 
 
         if (facingRight == false && moveInput > 0)
@@ -48,7 +48,7 @@ public class Movement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space) && extraJump > 0)
         {
-            rb.velocity = Vector2.up * jumpForce;
+            slime.velocity = Vector2.up * jumpForce;
             extraJump--;
         }
       
